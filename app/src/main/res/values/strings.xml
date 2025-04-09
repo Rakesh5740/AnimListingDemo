@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Anim Demo</string>
+
+    <string name="name">Employee A</string>
+    <string name="email">abc@gmail.com</string>
+    <string name="job_title">Director</string>
+    <string name="team">Team A</string>
+
+</resources>
