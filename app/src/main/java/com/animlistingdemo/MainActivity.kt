@@ -7,10 +7,8 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.animlistingdemo.MainViewModel
 import com.animlistingdemo.adapter.AnimListingAdapter
-import com.animlistingdemo.data.Employee
-import com.animlistingdemo.data.EmployeeList
+import com.animlistingdemo.data.AnimItem
 import com.animlistingdemo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -22,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-    private lateinit var dataList: ArrayList<Employee>
+    private lateinit var dataList: ArrayList<AnimItem>
     private var adapter: AnimListingAdapter? = null
 
     @SuppressLint("NotifyDataSetChanged")
@@ -32,12 +30,14 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupRecyclerView()
 
-        viewModel.employeeList.observe(this) {
+        viewModel.animList.observe(this) { list ->
             binding.progressbar.visibility = View.GONE
 
-            if (it.employeeList.isNotEmpty())
+            list?.let {
                 bindData(it)
-            else Toast.makeText(this, "No data found", Toast.LENGTH_SHORT).show()
+            }?.run {
+                Toast.makeText(this@MainActivity, "No data found", Toast.LENGTH_SHORT).show()
+            }
         }
 
         viewModel.isLoading.observe(this) {
@@ -53,12 +53,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.swipeToRefresh.setOnRefreshListener {
-
             // on below line we are setting is refreshing to false.
             binding.swipeToRefresh.isRefreshing = false
             dataList.clear()
             adapter?.notifyDataSetChanged()
-            viewModel.fetchDetails()
+            viewModel.fetchHomeData()
         }
     }
 
@@ -71,9 +70,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    private fun bindData(response: EmployeeList) {
-        for (employee in response.employeeList) {
-            employee?.let {
+    private fun bindData(response: List<AnimItem>) {
+        for (item in response) {
+            item.let {
                 dataList.add(it)
             }
         }

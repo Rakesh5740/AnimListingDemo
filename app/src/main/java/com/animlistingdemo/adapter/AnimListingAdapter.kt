@@ -9,14 +9,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.animlistingdemo.AnimDetailsActivity
 import com.animlistingdemo.R
-import com.animlistingdemo.data.Employee
+import com.animlistingdemo.data.AnimItem
 import com.animlistingdemo.databinding.AnimItemBinding
 import com.bumptech.glide.Glide
 
 
 class AnimListingAdapter(
     private val context: Context,
-    private val list: ArrayList<Employee>
+    private val list: ArrayList<AnimItem>
 ) : RecyclerView.Adapter<AnimListingAdapter.MyViewHolder>() {
 
 
@@ -34,35 +34,33 @@ class AnimListingAdapter(
     }
 
     class MyViewHolder(binding: AnimItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        var thumbNail: ImageView = binding.profileImage
-        var fullName: TextView = binding.fullName
-        var email: TextView = binding.email
-        var team: TextView = binding.team
-        var jobTitle: TextView = binding.jobTitle
+        var posterImage: ImageView = binding.posterImage
+        var title: TextView = binding.title
+        var numberOfEpisodes: TextView = binding.numberOfEpisodes
+        var rating: TextView = binding.rating
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = list[position]
-        holder.fullName.text = item.fullName
-        holder.email.text = item.email
-        holder.team.text = item.team
-        holder.jobTitle.text = item.jobTitle
+        holder.title.text = item.title
+        holder.numberOfEpisodes.text = item.numberOfEpisode.toString()
+        holder.rating.text = item.rating
 
         Glide.with(context)
-            .load(item.thumbNail)
+            .load(item.posterImage)
             .placeholder(R.drawable.ic_launcher_background)
             .error(R.drawable.ic_launcher_background)
-            .into(holder.thumbNail)
+            .into(holder.posterImage)
 
         holder.itemView.setOnClickListener {
-            context.startActivity(Intent(context, AnimDetailsActivity::class.java))
+            var intent = Intent(context, AnimDetailsActivity::class.java)
+            intent.putExtra("animeId", item.animeId)
+            context.startActivity(intent)
         }
-
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
-
 
 }

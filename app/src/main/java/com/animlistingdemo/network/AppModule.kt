@@ -1,7 +1,7 @@
 package com.animlistingdemo.network
 
-import com.animlistingdemo.repository.EmployeeRepository
-import com.animlistingdemo.repository.EmployeeRepositoryImpl
+import com.animlistingdemo.repository.AnimRepository
+import com.animlistingdemo.repository.AnimRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -15,6 +15,6 @@ abstract class AppModule {
     @Singleton
     @Binds
     abstract fun bindEmployeeRepository(
-        employeeRepositoryImpl: EmployeeRepositoryImpl
-    ): EmployeeRepository
+        employeeRepositoryImpl: AnimRepositoryImpl
+    ): AnimRepository
 }

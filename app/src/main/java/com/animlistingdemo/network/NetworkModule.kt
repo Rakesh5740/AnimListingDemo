@@ -1,5 +1,6 @@
 package com.animlistingdemo.network
 
+import com.animlistingdemo.BuildConfig
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -53,7 +54,7 @@ class NetworkModule {
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl(API_BASE_URL_DEV)
+            .baseUrl(BuildConfig.API_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(okHttpClient)
             .build()
@@ -63,8 +64,5 @@ class NetworkModule {
         level = HttpLoggingInterceptor.Level.BODY
     }
 
-    companion object {
-        private const val API_BASE_URL_DEV =
-            "https://storage.googleapis.com/animall.appspot.com/android-interview/"
-    }
+
 }

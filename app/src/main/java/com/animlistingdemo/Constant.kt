@@ -8,17 +8,22 @@ internal object Constant {
         const val CODE = "code"
     }
 
-    object Employee {
-        const val EMPLOYEE_LIST = "employees"
-        const val UUID = "uuid"
-        const val FULL_NAME = "full_name"
-        const val PHONE_NUMBER = "phone_number"
-        const val EMAIL_ADDRESS = "email_address"
-        const val BIOGRAPHY = "biography"
-        const val TEAM = "team"
-        const val EMPLOYEE_TYPE = "employee_type"
-        const val PHOTO_URL_SMALL = "photo_url_small"
+    object AnimeConstants {
+        const val data = "data"
+        const val title = "title"
+        const val numberOfEpisode = "episodes"
+        const val rating = "rating"
+        const val posterPlayerUrl = "posterPlayerUrl"
+        const val posterImageUrl = "posterImageUrl"
+        const val plotSynopsis = "synopsis"
+        const val genre = "genres"
+        const val images = "images"
+        const val jpg = "jpg"
+        const val image_url = "image_url"
+        const val mal_id = "mal_id"
 
+        const val trailer = "trailer"
+        const val url = "embed_url"
     }
 
 }

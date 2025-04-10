@@ -5,8 +5,8 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/profile_image"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/poster_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_margin="20dp"
@@ -16,40 +16,31 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/full_name"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:hint="@string/name"
         android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+        app:layout_constraintTop_toBottomOf="@+id/poster_image" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/email"
+        android:id="@+id/number_of_episodes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/email"
         android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/full_name" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/job_title"
+        android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="@string/job_title"
         android:padding="10dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/team"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/team"
-        android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/job_title" />
+        app:layout_constraintTop_toBottomOf="@+id/number_of_episodes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
