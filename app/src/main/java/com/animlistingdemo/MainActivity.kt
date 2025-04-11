@@ -2,6 +2,7 @@ package com.animlistingdemo
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,6 +12,7 @@ import com.animlistingdemo.adapter.AnimListingAdapter
 import com.animlistingdemo.data.AnimItem
 import com.animlistingdemo.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 
 @AndroidEntryPoint
@@ -36,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             list?.let {
                 bindData(it)
             }?.run {
-                Toast.makeText(this@MainActivity, "No data found", Toast.LENGTH_SHORT).show()
+                Timber.e("No data found")
             }
         }
 

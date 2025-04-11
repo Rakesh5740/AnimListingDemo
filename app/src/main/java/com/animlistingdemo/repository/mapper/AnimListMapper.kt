@@ -40,7 +40,7 @@ object AnimListMapper {
                 rating = data.rating,
                 synopsis = data.synopsis,
                 posterImage = data.images.jpg.image_url,
-                videoUrl = data.trailer.embed_url,
+                videoUrl = "https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8",
                 genre = data.genres[0].name
             )
         }
